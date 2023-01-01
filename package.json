@@ -8,6 +8,16 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@types/jsdom": "^20.0.1",
     "nuxt": "3.0.0"
+  },
+  "dependencies": {
+    "@fontsource/atkinson-hyperlegible": "^4.5.10",
+    "chart.js": "^4.1.1",
+    "chartjs-adapter-date-fns": "^3.0.0",
+    "date-fns": "^2.29.3",
+    "jsdom": "^20.0.3",
+    "normalize.css": "^8.0.1",
+    "vue-chartjs": "^5.1.0"
   }
 }
