@@ -1,6 +1,6 @@
-import { JSDOM } from "jsdom";
 import { RatingPoint } from "~~/types";
 import { times } from "~~/utils";
+import $, { load } from "cheerio";
 
 export default defineEventHandler(async (event) => {
   const player = event.context.params.player as string;
@@ -13,27 +13,22 @@ export default defineEventHandler(async (event) => {
           `http://ratingupdate.info/player/${player}/${character}/history?offset=${offset}`
         );
 
-        const dom = new JSDOM(rawHtml);
-        const sampleData: RatingPoint[] = [];
+        const rows = load(rawHtml)("tr").toArray().slice(1);
 
-        dom.window.document.querySelectorAll("tr").forEach((tr, i) => {
-          if (i === 0) return;
-
-          // FIXME: validate fetched data and throw if invalid
-
-          const date = tr.children.item(0)?.textContent!;
-          const rating = Number(
-            tr.children.item(1)?.textContent?.split(" ")[0]
-          );
-
-          const [g0, g1] = tr.children
-            .item(7)
-            ?.textContent?.split(" - ")
-            .map(Number)!;
-          const games = g0 + g1;
-
-          sampleData.push({ date, rating, games });
-        });
+        const sampleData: RatingPoint[] = rows
+          .map((row) => $(row))
+          .map((row) => {
+            const tds = row.children().toArray();
+            const date = $(tds.at(0)).text();
+            const rating = Number($(tds.at(1)).text().split(" ")[0]);
+            const [g0, g1] = $(tds.at(7)).text().split(" - ").map(Number);
+            const games = g0 + g1;
+            return {
+              date,
+              rating,
+              games,
+            };
+          });
 
         return sampleData;
       })
