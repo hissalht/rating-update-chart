@@ -6,6 +6,8 @@ export default defineEventHandler(async (event) => {
   const player = event.context.params.player as string;
   const character = event.context.params.character as string;
 
+  console.log("Fetching ratingupdate.com for", { player, character });
+
   const data = (
     await Promise.all(
       times(84, (i) => i * 100).map(async (offset) => {
