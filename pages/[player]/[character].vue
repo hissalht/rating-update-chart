@@ -30,7 +30,9 @@ const route = useRoute();
 const player = route.params.player as string;
 const character = route.params.character as string;
 
-const { data } = useFetch<RatingPoint[]>(`/api/${player}/${character}`);
+const { data, pending } = useFetch<RatingPoint[]>(
+  `/api/${player}/${character}`
+);
 
 const gameCount = computed(
   () => data.value?.reduce((total, { games }) => total + games, 0) ?? 0
@@ -40,7 +42,9 @@ const scale = ref<"game" | "time">("game");
 </script>
 
 <template>
-  <div>
+  <p v-if="pending">Loading...</p>
+
+  <div v-else>
     <p>{{ gameCount }} games</p>
     <fieldset>
       <legend>Choose the X-axis scale</legend>
