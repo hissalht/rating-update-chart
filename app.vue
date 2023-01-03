@@ -1,9 +1,7 @@
 <template>
   <v-app>
     <v-app-bar absolute>
-      <v-app-bar-title>
-        <nuxt-link to="/">Rating Update Charts</nuxt-link>
-      </v-app-bar-title>
+      <v-app-bar-title>Rating Update Charts</v-app-bar-title>
     </v-app-bar>
 
     <v-main>
