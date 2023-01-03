@@ -37,21 +37,25 @@ async function handleSearchSubmit() {
 <template>
   <h1>Search for a player</h1>
 
-  <form @submit.prevent="handleSearchSubmit">
-    <div>
-      <label for="player-name-input">Player name</label>
-      <input id="player-name-input" v-model="searchValue" />
-    </div>
-    <button type="submit">Search</button>
+  <form @submit.prevent="handleSearchSubmit" class="mt-4">
+    <v-text-field label="Player name" v-model="searchValue" />
+    <v-btn type="submit">Search</v-btn>
   </form>
 
   <div v-if="pending">LOADING...</div>
 
-  <ul v-else-if="searchResults">
-    <li v-for="item in searchResults">
-      <NuxtLink :to="`/${item.playerId}/${item.character}`">
-        {{ item.name }} / {{ item.character }}
-      </NuxtLink>
-    </li>
-  </ul>
+  <v-list class="mt-4">
+    <v-list-item
+      v-for="item in searchResults"
+      :title="item.name"
+      :to="`/${item.playerId}/${item.character}`"
+    >
+      <template #subtitle>
+        <v-chip density="compact">{{ formatCharacter(item.character) }}</v-chip>
+        {{ " " }}
+        <strong>{{ item.games }}</strong> games / Rating:
+        <strong>{{ item.rating }}</strong>
+      </template>
+    </v-list-item>
+  </v-list>
 </template>

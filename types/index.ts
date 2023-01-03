@@ -6,13 +6,15 @@ export interface RatingPoint {
   games: number;
 }
 
-// TODO: properly type Character
-// export enum Character {
-//   POTEMKIN = "PO",
-//   KY = "KY",
-// }
-
-export type Character = string;
+export enum Character {
+  POTEMKIN = "PO",
+  KY = "KY",
+  GOLDLEWIS = "GO",
+  GIOVANNA = "GI",
+  SIN = "SI",
+  BAIKEN = "BA",
+  RAMLETHAL = "RA",
+}
 
 export interface SearchResultItem {
   name: string;

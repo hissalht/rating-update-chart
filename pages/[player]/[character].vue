@@ -46,19 +46,12 @@ const scale = ref<"game" | "time">("game");
 
   <div v-else>
     <p>{{ gameCount }} games</p>
-    <fieldset>
-      <legend>Choose the X-axis scale</legend>
 
-      <label for="game-scale">
-        <input type="radio" id="game-scale" value="game" v-model="scale" />
-        Default scale
-      </label>
+    <v-radio-group inline label="Choose the X-axis scale" v-model="scale">
+      <v-radio label="Default scale" value="game"></v-radio>
+      <v-radio label="Time scale" value="time"></v-radio>
+    </v-radio-group>
 
-      <label for="time-scale">
-        <input type="radio" id="time-scale" value="time" v-model="scale" />
-        Time scale
-      </label>
-    </fieldset>
     <Line
       v-if="data"
       :options="{

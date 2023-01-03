@@ -8,16 +8,17 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@types/jsdom": "^20.0.1",
-    "nuxt": "3.0.0"
+    "nuxt": "3.0.0",
+    "vite-plugin-vuetify": "^1.0.1"
   },
   "dependencies": {
     "@fontsource/atkinson-hyperlegible": "^4.5.10",
+    "@mdi/font": "^7.1.96",
     "chart.js": "^4.1.1",
     "chartjs-adapter-date-fns": "^3.0.0",
     "cheerio": "1.0.0-rc.12",
     "date-fns": "^2.29.3",
-    "normalize.css": "^8.0.1",
-    "vue-chartjs": "^5.1.0"
+    "vue-chartjs": "^5.1.0",
+    "vuetify": "^3.0.6"
   }
 }
