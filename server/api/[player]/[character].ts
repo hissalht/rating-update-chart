@@ -15,19 +15,21 @@ export default defineEventHandler(async (event) => {
           `http://ratingupdate.info/player/${player}/${character}/history?offset=${offset}`
         );
 
-        const rows = load(rawHtml)("tr").toArray().slice(1);
+        const rows = load(rawHtml)("tr").toArray().slice(1).reverse();
 
         const sampleData: RatingPoint[] = rows
           .map((row) => $(row))
           .map((row) => {
             const tds = row.children().toArray();
             const date = $(tds.at(0)).text();
-            const rating = Number($(tds.at(1)).text().split(" ")[0]);
+            const rating = Number($(tds.at(1)).text().split(" ±")[0]);
+            const confidence = Number($(tds.at(1)).text().split(" ±")[1]);
             const [g0, g1] = $(tds.at(7)).text().split(" - ").map(Number);
             const games = g0 + g1;
             return {
               date,
               rating,
+              confidence,
               games,
             };
           });

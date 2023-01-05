@@ -10,6 +10,7 @@ import {
   LinearScale,
   PointElement,
   TimeScale,
+  Filler,
 } from "chart.js";
 import "chartjs-adapter-date-fns";
 import { RatingPoint } from "~~/types";
@@ -22,7 +23,8 @@ ChartJS.register(
   PointElement,
   TimeScale,
   CategoryScale,
-  LinearScale
+  LinearScale,
+  Filler
 );
 
 const route = useRoute();
@@ -63,13 +65,16 @@ const scale = ref<"game" | "time">("game");
             },
           }),
           y: {
-            suggestedMin: 1400,
-            suggestedMax: 2100,
+            max: Math.max(...data.map((point) => point.rating)) + 100,
+            min: Math.min(...data.map((point) => point.rating)) - 100,
           },
         },
         plugins: {
           legend: {
             display: false,
+          },
+          filler: {
+            propagate: false,
           },
         },
       }"
@@ -77,10 +82,29 @@ const scale = ref<"game" | "time">("game");
         labels: data.map((point) => point.date),
         datasets: [
           {
-            label: character,
+            label: 'Lower bound',
+            data: data.map((point) => point.rating - point.confidence),
+            pointStyle: false,
+            borderColor: '#0002',
+            borderWidth: 2,
+            backgroundColor: '#0001',
+            stepped: true,
+            fill: '+2',
+          },
+          {
+            label: 'Rating',
             data: data.map((point) => point.rating),
             pointStyle: false,
             borderColor: 'red',
+            stepped: true,
+            fill: false,
+          },
+          {
+            label: 'Upper bound',
+            data: data.map((point) => point.rating + point.confidence),
+            pointStyle: false,
+            borderColor: '#0002',
+            borderWidth: 2,
             stepped: true,
           },
         ],

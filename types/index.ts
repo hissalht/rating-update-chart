@@ -1,6 +1,7 @@
 export interface RatingPoint {
   date: string;
   rating: number;
+  confidence: number;
 
   /* Number of games for that point. */
   games: number;
