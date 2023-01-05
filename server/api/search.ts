@@ -37,10 +37,19 @@ export default defineEventHandler(
       .toArray()
       .map((el) => Number($(el).text().split(" ")[0]));
 
-    return playerInfos.map((infos, i) => ({
+    const data = playerInfos.map((infos, i) => ({
       ...infos,
       games: gameCounts[i],
       rating: ratings[i],
     }));
+
+    // set cache headers to let vercel cache the returned data
+    const cacheDuration = 60 * 60 * 24; // 24 hours cache
+    event.node.res.setHeader(
+      "Cache-Control",
+      `max-age=0, s-maxage=${cacheDuration}`
+    );
+
+    return data;
   }
 );

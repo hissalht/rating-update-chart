@@ -61,5 +61,12 @@ export default defineEventHandler(async (event) => {
     return 0;
   });
 
+  // set cache headers to let vercel cache the returned data
+  const cacheDuration = 60 * 60 * 24; // 24 hours cache
+  event.node.res.setHeader(
+    "Cache-Control",
+    `max-age=0, s-maxage=${cacheDuration}`
+  );
+
   return data;
 });
