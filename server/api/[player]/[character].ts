@@ -1,6 +1,6 @@
 import { RatingPoint } from "~~/types";
 import { times } from "~~/utils";
-import $, { load } from "cheerio";
+import { load } from "cheerio";
 
 export default defineEventHandler(async (event) => {
   const player = event.context.params.player as string;
@@ -15,24 +15,40 @@ export default defineEventHandler(async (event) => {
           `http://ratingupdate.info/player/${player}/${character}/history?offset=${offset}`
         );
 
-        const rows = load(rawHtml)("tr").toArray().slice(1).reverse();
+        const $ = load(rawHtml);
+
+        const rows = $("tr").toArray().slice(1).reverse();
 
         const sampleData: RatingPoint[] = rows
           .map((row) => $(row))
           .map((row) => {
             const tds = row.children().toArray();
             const date = $(tds.at(0)).text();
-            const rating = Number($(tds.at(1)).text().split(" ±")[0]);
+            const baseRating = Number($(tds.at(1)).text().split(" ±")[0]);
             const confidence = Number($(tds.at(1)).text().split(" ±")[1]);
-            const [g0, g1] = $(tds.at(7)).text().split(" - ").map(Number);
-            const games = g0 + g1;
-            return {
+
+            // The title attribute contains the rating changes for each individual games in the set.
+            const ratingChanges = $(tds.at(8)?.firstChild!)
+              .attr("title")!
+              .trim()
+              .split(" ")
+              .map(Number);
+
+            const ratings: number[] = [];
+
+            for (let i = 0; i < ratingChanges.length; i++) {
+              const ratingChange = ratingChanges[i];
+              const lastRating = ratings.at(-1) ?? baseRating;
+              ratings.push(lastRating + ratingChange);
+            }
+
+            return ratings.map((r) => ({
               date,
-              rating,
+              rating: r,
               confidence,
-              games,
-            };
-          });
+            }));
+          })
+          .flat();
 
         return sampleData;
       })

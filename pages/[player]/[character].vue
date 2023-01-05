@@ -36,9 +36,7 @@ const { data, pending } = useFetch<RatingPoint[]>(
   `/api/${player}/${character}`
 );
 
-const gameCount = computed(
-  () => data.value?.reduce((total, { games }) => total + games, 0) ?? 0
-);
+const gameCount = computed(() => data.value?.length ?? 0);
 
 const scale = ref<"game" | "time">("game");
 </script>
@@ -85,8 +83,8 @@ const scale = ref<"game" | "time">("game");
             label: 'Lower bound',
             data: data.map((point) => point.rating - point.confidence),
             pointStyle: false,
-            borderColor: '#0002',
-            borderWidth: 2,
+            borderColor: '#DDD',
+            borderWidth: 0,
             backgroundColor: '#0001',
             stepped: true,
             fill: '+2',
@@ -96,6 +94,7 @@ const scale = ref<"game" | "time">("game");
             data: data.map((point) => point.rating),
             pointStyle: false,
             borderColor: 'red',
+            borderWidth: 2,
             stepped: true,
             fill: false,
           },
@@ -103,17 +102,12 @@ const scale = ref<"game" | "time">("game");
             label: 'Upper bound',
             data: data.map((point) => point.rating + point.confidence),
             pointStyle: false,
-            borderColor: '#0002',
-            borderWidth: 2,
+            borderColor: '#DDD',
+            borderWidth: 0,
             stepped: true,
           },
         ],
       }"
     />
-
-    <details>
-      <summary>Raw data (click to expand)</summary>
-      <pre><code>{{ JSON.stringify(data, null, 2) }}</code></pre>
-    </details>
   </div>
 </template>
