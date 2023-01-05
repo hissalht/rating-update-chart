@@ -8,12 +8,11 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@mdi/js": "^7.1.96",
     "nuxt": "3.0.0",
     "vite-plugin-vuetify": "^1.0.1"
   },
   "dependencies": {
-    "@fontsource/atkinson-hyperlegible": "^4.5.10",
-    "@mdi/font": "^7.1.96",
     "chart.js": "^4.1.1",
     "chartjs-adapter-date-fns": "^3.0.0",
     "cheerio": "1.0.0-rc.12",

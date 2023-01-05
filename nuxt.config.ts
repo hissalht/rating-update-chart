@@ -4,8 +4,7 @@ import vuetify from "vite-plugin-vuetify";
 export default defineNuxtConfig({
   css: [
     "vuetify/styles",
-    "@fontsource/atkinson-hyperlegible",
-    "@mdi/font/css/materialdesignicons.css",
+    // "@mdi/font/css/materialdesignicons.css",
     "@/style.css",
   ],
   typescript: {

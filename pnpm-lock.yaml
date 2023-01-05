@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@fontsource/atkinson-hyperlegible': ^4.5.10
   '@mdi/font': ^7.1.96
+  '@mdi/js': ^7.1.96
   chart.js: ^4.1.1
   chartjs-adapter-date-fns: ^3.0.0
   cheerio: 1.0.0-rc.12
@@ -13,7 +13,6 @@ specifiers:
   vuetify: ^3.0.6
 
 dependencies:
-  '@fontsource/atkinson-hyperlegible': 4.5.10
   '@mdi/font': 7.1.96
   chart.js: 4.1.1
   chartjs-adapter-date-fns: 3.0.0_iln6v37jwapfq6ambblo6nwala
@@ -23,6 +22,7 @@ dependencies:
   vuetify: 3.0.6_vite-plugin-vuetify@1.0.1
 
 devDependencies:
+  '@mdi/js': 7.1.96
   nuxt: 3.0.0
   vite-plugin-vuetify: 1.0.1_vuetify@3.0.6
 
@@ -351,10 +351,6 @@ packages:
     dev: true
     optional: true
 
-  /@fontsource/atkinson-hyperlegible/4.5.10:
-    resolution: {integrity: sha512-UyKTkEGQnF5lbAYRIPCeAikkVgBPQ8n3ve/cdJX1tp0Kma3pe7cZOVESEK2oyTZqn7Jt3ZS51hbY7hR8u4dLXA==}
-    dev: false
-
   /@ioredis/commands/1.2.0:
     resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
     dev: true
@@ -429,6 +425,10 @@ packages:
   /@mdi/font/7.1.96:
     resolution: {integrity: sha512-Imag6npmfkBDi2Ze2jiZVAPTDIKLxhz2Sx82xJ2zctyAU5LYJejLI5ChnDwiD9bMkQfVuzEsI98Q8toHyC+HCg==}
     dev: false
+
+  /@mdi/js/7.1.96:
+    resolution: {integrity: sha512-wlrJs6Ryhaa5CqhK3FjTfMRnb/s7HeLkKMFqwQySkK86cdN1TGdzpSM3O4tsmzCA1dYBeTbXvOwSE/Y42cUrvA==}
+    dev: true
 
   /@netlify/functions/1.3.0:
     resolution: {integrity: sha512-hN/Fgpz8XIOBfsBPLYUMxVKBlCopgeqGB0popayicnmkFLnvKByTTMYgF01wcF9DBtBQdV0H2h1kPFpMl34I8w==}

@@ -1,5 +1,5 @@
 import { createVuetify } from "vuetify";
-import { aliases, mdi } from "vuetify/iconsets/mdi";
+import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 import { md2 } from "vuetify/blueprints";
 
 export default defineNuxtPlugin((nuxtApp) => {
