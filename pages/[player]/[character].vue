@@ -56,6 +56,7 @@ const scale = ref<"game" | "time">("game");
       v-if="data"
       :options="{
         responsive: true,
+        animation: false,
         scales: {
           ...(scale === 'time' && {
             x: {
