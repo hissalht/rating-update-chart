@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@mdi/js': ^7.1.96
+  '@vercel/analytics': ^0.1.6
   chart.js: ^4.1.1
   chartjs-adapter-date-fns: ^3.0.0
   cheerio: 1.0.0-rc.12
@@ -12,6 +13,7 @@ specifiers:
   vuetify: ^3.0.6
 
 dependencies:
+  '@vercel/analytics': 0.1.6
   chart.js: 4.1.1
   chartjs-adapter-date-fns: 3.0.0_iln6v37jwapfq6ambblo6nwala
   cheerio: 1.0.0-rc.12
@@ -827,6 +829,12 @@ packages:
       hookable: 5.4.2
       vue: 3.2.45
     dev: true
+
+  /@vercel/analytics/0.1.6:
+    resolution: {integrity: sha512-zNd5pj3iDvq8IMBQHa1YRcIteiw6ZiPB8AsONHd8ieFXlNpLqhXfIYnf4WvTfZ7S1NSJ++mIM14aJnNac/VMXQ==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dev: false
 
   /@vercel/nft/0.22.6:
     resolution: {integrity: sha512-gTsFnnT4mGxodr4AUlW3/urY+8JKKB452LwF3m477RFUJTAaDmcz2JqFuInzvdybYIeyIv1sSONEJxsxnbQ5JQ==}
