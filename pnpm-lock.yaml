@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@mdi/js': ^7.1.96
+  '@nuxtjs/web-vitals': ^0.2.2
   '@vercel/analytics': ^0.1.6
   chart.js: ^4.1.1
   chartjs-adapter-date-fns: ^3.0.0
@@ -23,6 +24,7 @@ dependencies:
 
 devDependencies:
   '@mdi/js': 7.1.96
+  '@nuxtjs/web-vitals': 0.2.2
   nuxt: 3.0.0
   vite-plugin-vuetify: 1.0.1_vuetify@3.0.6
 
@@ -642,6 +644,19 @@ packages:
       - typescript
       - vls
       - vti
+    dev: true
+
+  /@nuxtjs/web-vitals/0.2.2:
+    resolution: {integrity: sha512-UfIxBJGDXYnCgchPKt3rN1Tf66gUpRtOyo8gk9V9S2VWp8Q9ylHrwTB+y6ZPW+HRIC4B+KRh+LBIHv9ELycAJQ==}
+    dependencies:
+      '@nuxt/kit': 3.0.0
+      defu: 6.1.1
+      pathe: 1.0.0
+      ufo: 1.0.1
+      web-vitals: 3.1.0
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
     dev: true
 
   /@rollup/plugin-alias/4.0.2_rollup@2.79.1:
@@ -4711,6 +4726,10 @@ packages:
   /web-streams-polyfill/3.2.1:
     resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
     engines: {node: '>= 8'}
+    dev: true
+
+  /web-vitals/3.1.0:
+    resolution: {integrity: sha512-zCeQ+bOjWjJbXv5ZL0r8Py3XP2doCQMZXNKlBGfUjPAVZWokApdeF/kFlK1peuKlCt8sL9TFkKzyXE9/cmNJQA==}
     dev: true
 
   /webidl-conversions/3.0.1:

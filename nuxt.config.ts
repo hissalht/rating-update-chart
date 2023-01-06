@@ -19,5 +19,6 @@ export default defineNuxtConfig({
         config.plugins?.push(vuetify());
       });
     },
+    "@nuxtjs/web-vitals",
   ],
 });
